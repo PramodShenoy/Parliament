@@ -1,0 +1,120 @@
+package com.example.root.parliament;
+
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ListView;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
+
+public class RSMemberActivity extends AppCompatActivity {
+
+    private SQLiteDatabase db;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_rsmember);
+        InputStream inputStream = getResources().openRawResource(R.raw.rsmem);
+        ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+
+        db = openOrCreateDatabase("system", MODE_PRIVATE, null);
+        db.execSQL("create table if not exists rsmember (name varchar(50),party varchar(20),state varchar(20),primary key(name,state));");
+
+        int i;
+        try {
+            i = inputStream.read();
+            while (i != -1)
+            {
+                byteArrayOutputStream.write(i);
+                i = inputStream.read();
+            }
+            inputStream.close();
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        ArrayList<RSMember> input=new ArrayList<>();
+        input=getlsg(byteArrayOutputStream.toString());
+        ArrayList<RSMember> str=new ArrayList<>();
+        for(int j=0;j<input.size();j++)
+        {
+            RSMember obj=input.get(j);
+            ContentValues cv = new ContentValues();
+            cv.put("name",obj.getName());
+            cv.put("party",obj.getParty());
+            cv.put("state",obj.getState());
+            db.insert("rsmember",null,cv);
+        }
+
+
+
+        Cursor cursor=db.rawQuery("select * from rsmember",null);
+        ImageView back = (ImageView) findViewById(R.id.back);
+        back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
+
+
+        if(cursor != null)
+        {
+            while(cursor.moveToNext())
+            {
+                String a = cursor.getString(cursor.getColumnIndex("name"));
+                String b = cursor.getString(cursor.getColumnIndex("party"));
+                String c = cursor.getString(cursor.getColumnIndex("state"));
+                str.add(new RSMember(a,b,c));
+            }
+        }
+
+
+
+        ListView lv=(ListView) findViewById(R.id.list);
+        RSMemberAdapter lsGovAdapter=new RSMemberAdapter(this,str);
+        lv.setAdapter(lsGovAdapter);
+
+
+
+
+
+    }
+
+
+    private static ArrayList<RSMember> getlsg(String jsonResp) {
+        ArrayList<RSMember> list=new ArrayList<>();
+        if (TextUtils.isEmpty(jsonResp)) {
+            return null;
+        }
+
+        try {
+            JSONArray baseJsonResponse = new JSONArray(jsonResp);
+            for(int i=0;i<baseJsonResponse.length();i++)
+            {
+                JSONObject obj=baseJsonResponse.getJSONObject(i);
+                String party=obj.optString("Party Name");
+                String cat=obj.optString("State Name");
+                String name =obj.optString("Member Name");
+                RSMember lsGovBills=new RSMember(name,party,cat);
+                list.add(lsGovBills);
+            }
+
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
+}

@@ -1,0 +1,13 @@
+[{"Sessions":"First","Sitting Hours":28.03,"Time Lost Due to Disruptions or Forced Adjournments (hours)":0,"No. of Matters of Urgent Public Importance Raised During Zero Hour":8},
+{"Sessions":"Second","Sitting Hours":162.11,"Time Lost Due to Disruptions or Forced Adjournments (hours)":23.45,"No. of Matters of Urgent Public Importance Raised During Zero Hour":280},
+{"Sessions":"Third","Sitting Hours":105.12,"Time Lost Due to Disruptions or Forced Adjournments (hours)":31.49,"No. of Matters of Urgent Public Importance Raised During Zero Hour":224},
+{"Sessions":"Fourth","Sitting Hours":137.51,"Time Lost Due to Disruptions or Forced Adjournments (hours)":69.51,"No. of Matters of Urgent Public Importance Raised During Zero Hour":213},
+{"Sessions":"Fifth","Sitting Hours":136.22,"Time Lost Due to Disruptions or Forced Adjournments (hours)":45,"No. of Matters of Urgent Public Importance Raised During Zero Hour":314},
+{"Sessions":"Sixth","Sitting Hours":7.35,"Time Lost Due to Disruptions or Forced Adjournments (hours)":124.4,"No. of Matters of Urgent Public Importance Raised During Zero Hour":23},
+{"Sessions":"Seventh","Sitting Hours":116.4,"Time Lost Due to Disruptions or Forced Adjournments (hours)":25.18,"No. of Matters of Urgent Public Importance Raised During Zero Hour":366},
+{"Sessions":"Eighth","Sitting Hours":104.15,"Time Lost Due to Disruptions or Forced Adjournments (hours)":51.06,"No. of Matters of Urgent Public Importance Raised During Zero Hour":307},
+{"Sessions":"Ninth","Sitting Hours":85.01,"Time Lost Due to Disruptions or Forced Adjournments (hours)":76.21,"No. of Matters of Urgent Public Importance Raised During Zero Hour":168},
+{"Sessions":"Tenth ","Sitting Hours":187.36,"Time Lost Due to Disruptions or Forced Adjournments (hours)":48.42,"No. of Matters of Urgent Public Importance Raised During Zero Hour":634},
+{"Sessions":"Eleventh ","Sitting Hours":24.22,"Time Lost Due to Disruptions or Forced Adjournments (hours)":77.51,"No. of Matters of Urgent Public Importance Raised During Zero Hour":150},
+{"Sessions":"Twelfth","Sitting Hours":61.45,"Time Lost Due to Disruptions or Forced Adjournments (hours)":59.07,"No. of Matters of Urgent Public Importance Raised During Zero Hour":135},
+{"Sessions":"Thirteenth","Sitting Hours":94.42,"Time Lost Due to Disruptions or Forced Adjournments (hours)":92.4,"No. of Matters of Urgent Public Importance Raised During Zero Hour":244}]
